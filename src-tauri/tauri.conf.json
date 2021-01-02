@@ -38,8 +38,8 @@
     "window": {
       "title": "Color selector",
       "width": 800,
-      "height": 600,
-      "resizable": true,
+      "height": 400,
+      "resizable": false,
       "fullscreen": false
     },
     "security": {
