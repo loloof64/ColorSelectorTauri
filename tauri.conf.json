@@ -1,0 +1,70 @@
+{
+    "build": {
+        "distDir": "../dist",
+        "devPath": "http://localhost:4000",
+        "beforeDevCommand": "npm run dev",
+        "beforeBuildCommand": "npm run build",
+        "withGlobalTauri": false
+    },
+    "ctx": {
+        "debug": false,
+        "exitOnPanic": false
+    },
+    "tauri": {
+        "cli": {
+            "description": "Tauri communication example",
+            "longDescription": null,
+            "beforeHelp": null,
+            "afterHelp": null,
+            "args": [],
+            "subcommands": {}
+        },
+        "embeddedServer": {
+            "active": true
+        },
+        "bundle": {
+            "active": true,
+            "targets": [
+                "all"
+            ],
+            "identifier": "com.loloof64.colorselector",
+            "icon": [
+                "icons/32x32.png",
+                "icons/128x128.png",
+                "icons/128x128@2x.png",
+                "icons/icon.icns",
+                "icons/icon.ico"
+            ],
+            "resources": [],
+            "externalBin": [],
+            "copyright": "",
+            "category": "DeveloperTool",
+            "shortDescription": "",
+            "longDescription": "",
+            "deb": {
+                "depends": []
+            },
+            "osx": {
+                "frameworks": [],
+                "minimumSystemVersion": ""
+            },
+            "exceptionDomain": ""
+        },
+        "allowlist": {
+            "all": true
+        },
+        "window": {
+            "title": "Color selector",
+            "width": 800,
+            "height": 400,
+            "resizable": false,
+            "fullscreen": false
+        },
+        "security": {
+            "csp": "default-src blob: data: filesystem: ws: http: https: 'unsafe-eval' 'unsafe-inline'"
+        },
+        "inliner": {
+            "active": true
+        }
+    }
+}
