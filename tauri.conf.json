@@ -21,9 +21,7 @@
         },
         "bundle": {
             "active": true,
-            "targets": [
-                "all"
-            ],
+            "targets": "all",
             "identifier": "com.loloof64.colorselector",
             "icon": [
                 "icons/32x32.png",
