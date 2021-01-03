@@ -10,7 +10,7 @@ jobs:
     strategy:
       fail-fast: false
       matrix:
-        platform: [macos-latest, ubuntu-16.04, windows-latest]
+        platform: [macos-latest, ubuntu-18.04, windows-latest]
 
     runs-on: ${{ matrix.platform }}
     steps:
@@ -38,6 +38,6 @@ jobs:
       with:
         tagName: app-v__VERSION__ # the action automatically replaces \_\_VERSION\_\_ with the app version
         releaseName: "App v__VERSION__"
-        body: "A new released version"
-        draft: true
+        releaseBody: "A new released version"
+        releaseDraft: true
         prerelease: false
