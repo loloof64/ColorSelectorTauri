@@ -13,9 +13,6 @@
     "tauri": {
         "cli": {
             "description": "Tauri communication example",
-            "longDescription": null,
-            "beforeHelp": null,
-            "afterHelp": null,
             "args": [],
             "subcommands": {}
         },
