@@ -1,5 +1,12 @@
 {
   "ctx": {},
+  "build": {
+    "distDir": "../dist",
+    "devPath": "http://localhost:4000",
+    "beforeDevCommand": "npm run dev",
+    "beforeBuildCommand": "npm run build",
+    "withGlobalTauri": false
+  },
   "tauri": {
     "embeddedServer": {
       "active": true
@@ -7,7 +14,7 @@
     "bundle": {
       "active": true,
       "targets": "all",
-      "identifier": "com.tauri.dev",
+      "identifier": "com.loloof64.colorselector",
       "icon": [
         "icons/32x32.png",
         "icons/128x128.png",
