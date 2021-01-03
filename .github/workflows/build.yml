@@ -24,11 +24,11 @@ jobs:
         toolchain: stable
     - name: install tauri bundler
       run: cargo install tauri-bundler --force
-    - name: install webkit2gtk (ubuntu only)
+    - name: install webkit2gtk/libdbus (ubuntu only)
       if: matrix.platform == 'ubuntu-16.04'
       run: |
         sudo apt-get update
-        sudo apt-get install -y webkit2gtk-4.0
+        sudo apt-get install -y webkit2gtk-4.0 libdbus-1-dev
     - name: install app dependencies and build it
       run: yarn && yarn build
     - uses: tauri-apps/tauri-action@v0
