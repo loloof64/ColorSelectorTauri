@@ -35,7 +35,6 @@ jobs:
       - uses: loloof64/tauri-action@v0.0.9
         env:
           GITHUB_TOKEN: ${{ secrets.token }}
-          VERSION: 0.1.2
         with:
           tagName: app-v__VERSION__ # the action automatically replaces \_\_VERSION\_\_ with the app version
           releaseName: "App v__VERSION__"
