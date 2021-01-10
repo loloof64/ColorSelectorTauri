@@ -26,9 +26,9 @@ jobs:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         with:
           tag_name: app-v${{ env.PACKAGE_VERSION }}
-          release_name: "Desktop app v${{ env.PACKAGE_VERSION }}"
-          body: "Release v${{ env.PACKAGE_VERSION }}."
-          draft: true
+          release_name: "Desktop app v__VERSION__"
+          body: "Release v__VERSION__."
+          draft: false
           prerelease: false
   build-tauri:
     needs: create-release
