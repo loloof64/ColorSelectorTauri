@@ -1,0 +1,47 @@
+name: "publish"
+on:
+  push:
+    branches:
+      - main
+  workflow_dispatch:
+
+jobs:
+  publish-tauri:
+    strategy:
+      fail-fast: false
+      matrix:
+        platform: [macos-latest, ubuntu-18.04, windows-latest]
+
+    runs-on: ${{ matrix.platform }}
+    outputs:
+      RELEASE_UPLOAD_ID: ${{ steps.publish-tauri.outputs.id }}
+
+    steps:
+      - uses: actions/checkout@v2
+      - name: setup node
+        uses: actions/setup-node@v1
+        with:
+          node-version: 12
+      - name: install Rust stable
+        uses: actions-rs/toolchain@v1
+        with:
+          toolchain: stable
+      - name: install tauri bundler
+        run: cargo install tauri-bundler --force
+      - name: install webkit2gtk/libdbus (ubuntu only)
+        if: matrix.platform == 'ubuntu-18.04'
+        run: |
+          sudo apt-get update
+          sudo apt-get install -y webkit2gtk-4.0 libdbus-1-dev
+      - name: install app dependencies and build it
+        run: yarn && yarn build
+      - uses: loloof64/tauri-action@marketplace_2
+        env:
+          GITHUB_TOKEN: ${{ secrets.token }}
+        with:
+          tagName: app-v__VERSION__ # the action automatically replaces \_\_VERSION\_\_ with the app version
+          releaseName: "App v__VERSION__"
+          releaseBody: "Release v__VERSION"
+          releaseDraft: true
+          prerelease: false
+          releaseId: ${{ needs.publish-tauri.outputs.RELEASE_UPLOAD_ID }}
