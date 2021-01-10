@@ -13,6 +13,9 @@ jobs:
         platform: [macos-latest, ubuntu-18.04, windows-latest]
 
     runs-on: ${{ matrix.platform }}
+    outputs:
+      RELEASE_UPLOAD_ID: ${{ steps.publish-tauri.outputs.id }}
+
     steps:
       - uses: actions/checkout@v2
       - name: setup node
@@ -38,6 +41,7 @@ jobs:
         with:
           tagName: app-v__VERSION__ # the action automatically replaces \_\_VERSION\_\_ with the app version
           releaseName: "App v__VERSION__"
-          releaseBody: "First release"
+          releaseBody: "Release v__VERSION"
           releaseDraft: true
           prerelease: false
+          releaseId: ${{ needs.publish-tauri.outputs.RELEASE_UPLOAD_ID }}
